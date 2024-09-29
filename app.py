@@ -85,7 +85,7 @@ def set_page_style():
 
 # Função para enviar mensagem via API do Node.js
 def enviar_mensagem(numero, mensagem):
-    url = 'http://localhost:3000/send'  # Certifique-se de que o backend Node.js esteja rodando nessa URL
+    url = 'worthy-prosperity-production.up.railway.app'  # Certifique-se de que o backend Node.js esteja rodando nessa URL
     payload = {
         'numero': str(int(numero)),  # Garantir que o número seja tratado como string e sem decimais
         'mensagem': mensagem
