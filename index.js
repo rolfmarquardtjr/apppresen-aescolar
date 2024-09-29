@@ -24,7 +24,7 @@ function initWhatsAppClient() {
     });
 
     client.on('qr', (qr) => {
-        console.log('QR Code atualizado. Use a API /get-qr para obter o QR Code.');
+        console.log('QR Code atualizado. Use a API /generate-qr para obter o QR Code.');
 
         // Gera o QR Code como uma imagem PNG em base64
         qrcode.toDataURL(qr, (err, url) => {
@@ -126,7 +126,7 @@ app.post('/reset-whatsapp', (req, res) => {
 });
 
 // Endpoint para obter o QR Code atualizado
-app.get('/get-qr', (req, res) => {
+app.get('/generate-qr', (req, res) => {
     if (qrCode) {
         res.json({ qr: qrCode });  // qrCode contém o base64 da imagem PNG
     } else {
