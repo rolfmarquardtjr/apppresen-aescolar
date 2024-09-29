@@ -85,7 +85,7 @@ def set_page_style():
 
 # Função para enviar mensagem via API do Node.js
 def enviar_mensagem(numero, mensagem):
-    url = 'worthy-prosperity-production.up.railway.app'  # Certifique-se de que o backend Node.js esteja rodando nessa URL
+    url = 'https://worthy-prosperity-production.up.railway.app/send'  # Certifique-se de que o backend Node.js esteja rodando nessa URL
     payload = {
         'numero': str(int(numero)),  # Garantir que o número seja tratado como string e sem decimais
         'mensagem': mensagem
@@ -116,7 +116,7 @@ def registrar_presenca(aluno, serie, data, responsavel, numero, status):
 # Função para resetar o WhatsApp via API do backend
 def reset_whatsapp():
     try:
-        response = requests.post('http://localhost:3000/reset-whatsapp')
+        response = requests.post('https://worthy-prosperity-production.up.railway.app/reset-whatsapp')
         if response.status_code == 200:
             st.success("WhatsApp desconectado com sucesso. Aguardando novo QR Code...")
         else:
@@ -127,7 +127,7 @@ def reset_whatsapp():
 # Função para obter o QR Code via API do backend
 def get_qr_code():
     try:
-        response = requests.get('http://localhost:3000/get-qr')
+        response = requests.get('https://worthy-prosperity-production.up.railway.app/get-qr')
         if response.status_code == 200 and 'qr' in response.json():
             # Decodificar o QR Code em base64
             qr_code_base64 = response.json()['qr'].split(',')[1]  # Remove o cabeçalho 'data:image/png;base64,'
